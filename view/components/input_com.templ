@@ -1,0 +1,24 @@
+package components
+
+import "fmt"
+
+type InputProps struct {
+	Typ         string
+	Name        string
+	Placeholder string
+	Label       string
+	Required    bool
+}
+
+templ Input(props InputProps) {
+	<label for={ fmt.Sprintf("input-%s", props.Name) } class="block text-sm font-medium mb-2 dark:text-white">{ props.Label }</label>
+	<input
+		type={ props.Typ }
+		id={ fmt.Sprintf("input-%s", props.Name) }
+		class="py-3 px-4 mb-2 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
+		placeholder={ props.Placeholder }
+		if props.Required {
+			required
+		}
+	/>
+}

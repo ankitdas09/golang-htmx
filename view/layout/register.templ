@@ -1,0 +1,34 @@
+package layout
+
+templ Register() {
+	<html>
+		<head>
+			<link href="/public/css/output.css" rel="stylesheet"/>
+			<script src="/public/preline/dist/preline.js"></script>
+			<link href="/public/css/register/main.css" rel="stylesheet"/>
+			<script src="/public/js/htmx/htmx.min.js"></script>
+		</head>
+		<body class="">
+			<div class="h-screen grid grid-cols-1 md:grid-cols-3 gap-4">
+				<div class="hidden md:block hero-pattern overflow-hidden">
+					<div>
+						<img src="/public/images/register/logo.png" class="max-w-none w-60 h-auto" alt="Edresco logo"/>
+						<p class="pl-6 text-white">Learning Today, Leading Tomorrow</p>
+					</div>
+				</div>
+				<div class="col-span-2 p-2 overflow-scroll">
+					<h1 class="text-3xl mb-2 mt-2">
+						Register
+					</h1>
+					<p class="mb-4">Please fill your details</p>
+					<div class="grid grid-cols-3 gap-4">
+						<div class="col-span-2" id="form-space">
+							{ children... }
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+		</body>
+	</html>
+}

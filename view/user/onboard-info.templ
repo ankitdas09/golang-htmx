@@ -1,0 +1,58 @@
+package user
+
+import (
+	"edresco/view/layout"
+	"edresco/view/components"
+	"edresco/model"
+)
+
+templ OnboardInfo(user model.User) {
+	@layout.Register() {
+		<ul class="relative flex flex-row gap-x-2 mb-8 m-w-120">
+			<!-- Item -->
+			<li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+				<div class="min-w-[28px] min-h-[28px] inline-flex justify-center items-center text-xs align-middle">
+					<span class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-gray-800 font-medium text-white rounded-full dark:bg-white dark:text-gray-800">
+						1
+					</span>
+					<span class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+						Personal Information
+					</span>
+				</div>
+				<div class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700"></div>
+			</li>
+			<!-- End Item -->
+			<!-- Item -->
+			<li class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+				<div class="min-w-[28px] min-h-[28px] inline-flex justify-center items-center text-xs align-middle">
+					<span class="w-7 h-7 flex justify-center items-center flex-shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full dark:bg-white dark:text-gray-800">
+						2
+					</span>
+					<span class="ms-2 block text-sm font-medium text-gray-800 dark:text-white">
+						Phone Number Verification
+					</span>
+				</div>
+				<div class="w-full h-px flex-1 bg-gray-200 group-last:hidden dark:bg-gray-700"></div>
+			</li>
+			<!-- End Item -->
+		</ul>
+		<form hx-post="/onboard/info" hx-target="#form-space" hx-disabled-elt="#submit-btn">
+			@components.Input(components.InputProps{Typ: "number", Name: "phnumber", Label: "Phone Number", Placeholder: "Enter your Phone Number", Required: true})
+			@components.Input(components.InputProps{Typ: "email", Name: "email", Label: "Email", Placeholder: "Enter your Email", Required: false})
+			@components.Input(components.InputProps{Typ: "text", Name: "fname", Label: "First Name", Placeholder: "First Name + Middle Name", Required: true})
+			@components.Input(components.InputProps{Typ: "text", Name: "lname", Label: "Last Name", Placeholder: "Last Name", Required: true})
+			@components.Input(components.InputProps{Typ: "date", Name: "date", Label: "Date of Birth", Placeholder: "Date of Birth", Required: true})
+			@components.Select(components.SelectProps{Options: []string{"Male", "Female", "Non-Binary"}, Placeholder: "Gender"})
+			@components.Select(components.SelectProps{Options: []string{"8", "9", "10", "11", "12", "Dropper"}, Placeholder: "Class"})
+			@components.Input(components.InputProps{Typ: "text", Name: "addressline1", Label: "Address Line 1", Placeholder: "Address Line 1", Required: true})
+			@components.Input(components.InputProps{Typ: "text", Name: "addressline2", Label: "Address Line 2 (Optional)", Placeholder: "Address Line 2", Required: false})
+			@components.Input(components.InputProps{Typ: "text", Name: "district", Label: "Disctrict", Placeholder: "District", Required: true})
+			@components.Select(components.SelectProps{Options: []string{"8", "9", "10", "11", "12", "Dropper"}, Placeholder: "State"})
+			@components.Input(components.InputProps{Typ: "number", Name: "postalcode", Label: "Postal Code", Placeholder: "Enter your Postal Code", Required: true})
+			<button id="submit-btn" type="submit" class="py-3 px-4 mt-2 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
+				Next Step
+				<svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+			</button>
+		</form>
+	}
+}
